@@ -9,5 +9,4 @@ public class Entry
         Console.WriteLine($"The prompt was: {entry._promptText}");
         Console.WriteLine($"Your entry: {entry._entryText}");
     }
-    
 }

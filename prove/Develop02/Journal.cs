@@ -2,7 +2,6 @@
 using System.IO;
 public class Journal
 {
-    
     public List<Entry> _entries = new List<Entry>();
     Entry displayEntries = new Entry();
     public void AddEntry(Entry newEntry){
@@ -26,7 +25,6 @@ public class Journal
         }
         }
         Console.WriteLine("Saved to file!");
-
     }
 
     public void LoadFromFile(string file){
