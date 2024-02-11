@@ -1,0 +1,2 @@
+0
+SimpleGoal:1st Simple Goal,First simple goal.,40,False
