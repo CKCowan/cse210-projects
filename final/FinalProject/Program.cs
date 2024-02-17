@@ -43,6 +43,32 @@ class Program
                 meeting.SetConducting(conducting);
                 
             }
+            else if(selectionDescription == "Add Speaker"){
+                List<string> speakingOrder = meeting.getSpeakingOrder();
+                
+                meeting.DisplayMenu(speakingOrder);
+                Console.Write("Which speaker would you like to add? ");
+                selection = Console.ReadLine();
+                string order = meeting.GetSelectionDesc(speakingOrder, selection);
+
+                Console.Write("What is the members first name? ");
+                string firstName = Console.ReadLine();
+
+                Console.Write("What is the members last name? ");
+                string lastName = Console.ReadLine();
+
+                // If selection is presiding
+                Console.Write("What is the topic for the speaker? ");
+                string topic = Console.ReadLine();
+
+                Speaker speaker = new Speaker(firstName, lastName, topic, order);
+                meeting.AddSpeaker(speaker);
+                // List<Speaker> speakers = speaker.GetSpeakers();
+
+                // meeting.SetSpeakers(speakers);
+                
+                
+            }
             else if(selectionDescription == "Display Program"){
                 meeting.DisplayMeetingInfo();
             }

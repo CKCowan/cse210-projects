@@ -6,13 +6,16 @@ public class Meeting
     private Presiding _presiding;
     private string _conducting;
 
+    private List<Speaker> _speakers = new List<Speaker>();
+
     private List<string> _bishopricTitles = new List<string>();
+    private List<string> _speakingOrder = new List<string>();
 
     public Meeting()
     {
         _menuChoices = new List<string> {"Assign Presiding", "Assign Conducting", "Add Speaker", "Add Hymn", "Assign Prayer", "Display Program", "Quit"};
         _bishopricTitles = new List<string> {"Bishop", "1st Counselor", "2nd Counselor"};
-        
+        _speakingOrder = new List<string> {"1st Speaker", "2nd Speaker", "3rd Speaker"};
     }
 
     public void DisplayMenu(List<string> menuChoices){
@@ -42,11 +45,21 @@ public class Meeting
         _conducting = $"Conducting: {title} {member}";
     }
 
+    // public void SetSpeakers(List<Speaker> speakers){
+    //     _speakers = speakers;
+    // }
+
+    public void AddSpeaker(Speaker speaker){
+        _speakers.Add(speaker);
+    }
+
 
     public void DisplayMeetingInfo(){
-        Console.WriteLine($"Presiding: {_presiding._firstName} {_presiding._lastName}, {_presiding.GetTitle()}");
+        Console.WriteLine($"Presiding: {_presiding.GetTitle()}, {_presiding._firstName} {_presiding._lastName}");
         Console.WriteLine(_conducting);
-
+        foreach(Speaker speaker in _speakers){
+            Console.WriteLine($"{speaker.getOrder()} - {speaker._firstName} {speaker._lastName}: {speaker.getTopic()}");
+        }
     }
 
     public List<string> getMenuChoices(){
@@ -54,5 +67,8 @@ public class Meeting
     }
     public List<string> getBishopricTitles(){
         return _bishopricTitles;
+    }
+    public List<string> getSpeakingOrder(){
+        return _speakingOrder;
     }
 }
