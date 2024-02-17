@@ -4,7 +4,7 @@ public class Simple : Goal
 {
     private bool _isComplete;
 
-    public Simple(string name, string description, int points, string type) : base(name, description, points, type)
+    public Simple(string name, string description, int points, string type) : base(name, description, points)
     {
         _isComplete = false;
     }

@@ -7,7 +7,7 @@ public abstract class Goal
     public int _points;
     public string _type;
 
-    public Goal (string name, string description, int points, string type)
+    public Goal (string name, string description, int points)
     {
         _shortName = name;
         _description = description;
@@ -21,6 +21,7 @@ public abstract class Goal
         return $"{_shortName} ({_description})";
     }
 
+    
     // This method should provide all of the details of a goal in a way that is easy to save to a file, and then load later.
     public abstract string GetStringRepresentation(string name, string description, int points);
 }

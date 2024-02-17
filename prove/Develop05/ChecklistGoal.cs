@@ -6,7 +6,7 @@ public class Checklist : Goal
     private int _target;
     private int _bonus;
 
-    public Checklist(string name, string description, int points, string type, int target, int bonus) : base(name, description, points, type)
+    public Checklist(string name, string description, int points, string type, int target, int bonus) : base(name, description, points)
     {
         _amountCompleted = 0;
         _target = target;

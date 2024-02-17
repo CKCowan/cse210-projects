@@ -1,6 +1,6 @@
 public class Eternal : Goal
 {
-    public Eternal(string name, string description, int points, string type) : base(name, description, points, type)
+    public Eternal(string name, string description, int points, string type) : base(name, description, points)
     {
 
     }

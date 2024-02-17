@@ -122,7 +122,26 @@ public class Manager
 
     // Loads the list of goals from a file.
     public void LoadGoals(){
+        Console.Write("What is the filename for the goal file? ");
+        string filename = Console.ReadLine();
+        string[] lines = System.IO.File.ReadAllLines(filename);
+
+        string goalDetails;
+        List<string> goalDetailsArry = new List<string>();
+        string goalType;
+
+        foreach (string line in lines)
+        {
+            string[] parts = line.Split(":");
+
+            goalType = parts[0];
+            goalDetails = parts[1];
+
+            goalDetailsArry.Add(goalDetails);
+        }
+
         
+
     }
 
     public void DisplayMenu(List<string> menuChoices)
@@ -144,5 +163,25 @@ public class Manager
         return selectionDesc;
         
     }
+
+    public virtual string createLoadedGoal(string details){
+        string[] detailsArray = details.Split(",");
+
+        string name;
+        string description;
+        string points;
+        foreach (string detail in detailsArray){
+            string[] parts = detail.Split(",");
+
+            name = parts[0];
+            description = parts[1];
+            points = parts[2];
+
+        }
+
+
+    }
+
+    
 
 }

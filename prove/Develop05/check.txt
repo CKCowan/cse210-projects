@@ -1,0 +1,2 @@
+0
+ChecklistGoal:1st checklist,First check goal,50,3,0
