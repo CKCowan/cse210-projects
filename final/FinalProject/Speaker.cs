@@ -12,9 +12,10 @@ public class Speaker : Member
         _speakingOrder = order;
     }
 
-    // public void AddSpeaker(Speaker speaker){
-    //     ;
-    // }
+    public override void ConfirmAction(string firstname, string lastname, string action)
+    {
+        Console.WriteLine($"{firstname} {lastname} added as {_speakingOrder}. Topic is {_topic}.\n");
+    }
 
     public List<Speaker> GetSpeakers(){
         return _speakers;

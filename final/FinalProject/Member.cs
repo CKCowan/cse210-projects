@@ -10,7 +10,8 @@ public class Member
         _lastName = lastName;
     }
 
-    public virtual void CreateMember(string firstName, string lastName){
-        
-    } 
+    public virtual void ConfirmAction(string firstname, string lastname, string action){
+        Console.WriteLine($"{firstname} {lastname} assigned as {action}.\n");
+    }
+
 }

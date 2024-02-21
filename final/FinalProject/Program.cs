@@ -6,6 +6,7 @@ class Program
     static void Main(string[] args)
     {
         Meeting meeting = new Meeting();
+        
         List<string> menuChoices = meeting.getMenuChoices();
 
         string selection = "";
@@ -30,6 +31,8 @@ class Program
 
                 Presiding presiding = new Presiding(firstName, lastName, title);
                 meeting.SetPresiding(presiding);
+
+                presiding.ConfirmAction(presiding._firstName, presiding._lastName, "Presiding");
             }
             else if(selectionDescription == "Assign Conducting"){
                 List<string> bishopricTitles = meeting.getBishopricTitles();
@@ -41,7 +44,9 @@ class Program
 
                 Conducting conducting = new Conducting(title);
                 meeting.SetConducting(conducting);
+                string name = conducting.getBishopricMember(title);
                 
+                Console.WriteLine($"{name} assigned to conduct the meeting.\n");
             }
             else if(selectionDescription == "Add Speaker"){
                 List<string> speakingOrder = meeting.getSpeakingOrder();
@@ -63,10 +68,47 @@ class Program
 
                 Speaker speaker = new Speaker(firstName, lastName, topic, order);
                 meeting.AddSpeaker(speaker);
-                // List<Speaker> speakers = speaker.GetSpeakers();
-
-                // meeting.SetSpeakers(speakers);
                 
+                speaker.ConfirmAction(speaker._firstName, speaker._lastName, "Speaker");
+                
+            }
+            else if(selectionDescription == "Add Hymn"){
+                List<string> hymnOrder = meeting.getHymnOrder();
+                meeting.DisplayMenu(hymnOrder);
+
+                Console.Write("Which hymn would you like to add? ");
+                selection = Console.ReadLine();
+                string order = meeting.GetSelectionDesc(hymnOrder, selection);
+
+                Console.Write("What is the title of the hymn? ");
+                string title = Console.ReadLine();
+
+                Console.Write("What is the hymn number? ");
+                int number = int.Parse(Console.ReadLine());
+
+                Hymn hymn = new Hymn(order, title, number);
+                meeting.AddHymn(hymn);
+
+                Console.WriteLine($"{order} hymn is added: {number} - {title}.\n");
+            }
+            else if(selectionDescription == "Assign Prayer"){
+                List<string> prayerOrder = meeting.getPrayerOrder();
+                
+                meeting.DisplayMenu(prayerOrder);
+                Console.Write("Which prayer would you like to assign? ");
+                selection = Console.ReadLine();
+                string order = meeting.GetSelectionDesc(prayerOrder, selection);
+
+                Console.Write("What is the members first name? ");
+                string firstName = Console.ReadLine();
+
+                Console.Write("What is the members last name? ");
+                string lastName = Console.ReadLine();
+
+                Prayer prayer = new Prayer(firstName, lastName, order);
+                meeting.AddPrayer(prayer);
+                
+                prayer.ConfirmAction(prayer._firstName, prayer._lastName, order);
                 
             }
             else if(selectionDescription == "Display Program"){
